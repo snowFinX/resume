@@ -1,7 +1,7 @@
 @import '../node_modules/normalize.css/normalize.css';
 
 :root {
-  --primary-color: #00bfff;
+  --primary: #00bfff;
   --black: #000000;
   --gray-1: #595959;
   --gray-2: #888888;
@@ -177,27 +177,24 @@ li li::before {
   margin: 0.5rem 0;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px), print {
   body {
-    padding: 1rem;
     font-size: 0.875rem;
-  }
-
-  .experience {
-    flex-direction: column;
-    gap: 2rem;
   }
 
   h1 {
     font-size: 2.625rem;
   }
+
   h2 {
     font-size: 1.75rem;
   }
+
   h3,
   h4 {
     font-size: 1.3125rem;
   }
+
   h5 {
     font-size: 1.1375rem;
   }
@@ -210,68 +207,7 @@ li li::before {
     font-size: 0.875rem;
     line-height: 1.1rem;
   }
-  li li::before {
-    line-height: 1rem;
-  }
 
-  li li > p {
-    font-size: 0.9625rem;
-  }
-
-  p {
-    font-size: 1.05rem;
-  }
-
-  section:not(:last-child)::before {
-    width: 100%;
-  }
-}
-@media print {
-  :root {
-    --gray-1: #b0b0b0;
-    --gray-2: #cccccc;
-  }
-  body {
-    width: auto;
-    height: auto;
-    font-size: 0.875rem;
-  }
-
-  section:first-child {
-    padding-top: 0;
-  }
-  section:not(:last-child)::before {
-    content: '';
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
-
-  a {
-    color: var(--gray-2);
-  }
-
-  h1 {
-    font-size: 2.625rem;
-  }
-  h2 {
-    font-size: 1.75rem;
-  }
-  h3,
-  h4 {
-    font-size: 1.3125rem;
-  }
-  h5 {
-    font-size: 1.1375rem;
-  }
-
-  li {
-    font-size: 1.05rem;
-  }
-
-  li::before {
-    font-size: 0.875rem;
-    line-height: 1.1rem;
-  }
   li li::before {
     line-height: 1rem;
   }
@@ -286,6 +222,41 @@ li li::before {
 
   .experience__left p {
     font-size: 0.875rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  .experience {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  section:not(:last-child)::before {
+    width: 100%;
+  }
+}
+@media print {
+  :root {
+    --gray-1: #b0b0b0;
+    --gray-2: #cccccc;
+  }
+  body {
+    width: auto;
+    height: auto;
+  }
+
+  section:first-child {
+    padding-top: 0;
+  }
+
+  section:not(:last-child)::before {
+    content: '';
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 }
 
