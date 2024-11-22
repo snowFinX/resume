@@ -88,15 +88,14 @@ ul {
   gap: 0.8rem;
   padding: 0;
 }
-ul:first-child {
+
+div > ul:first-child {
   margin-top: 0;
 }
-ul ul {
+
+li ul {
   margin-top: 0.5rem;
   gap: 0.5rem;
-}
-ul ul:first-of-type {
-  margin-top: 0.5rem;
 }
 
 li {
@@ -106,7 +105,7 @@ li {
   font-size: 1.2rem;
 }
 
-li li {
+li li > p {
   font-size: 1.1rem;
 }
 
@@ -119,6 +118,14 @@ li::before {
   left: 2px;
   top: 0;
   line-height: 1.4rem;
+}
+
+.project li > p {
+  margin: 0;
+}
+
+.project li > p:not(:first-of-type) {
+  margin-top: 0.4rem;
 }
 
 li li::before {
@@ -198,7 +205,16 @@ li li::before {
   li {
     font-size: 1.05rem;
   }
-  li li {
+
+  li::before {
+    font-size: 0.875rem;
+    line-height: 1.1rem;
+  }
+  li li::before {
+    line-height: 1rem;
+  }
+
+  li li > p {
     font-size: 0.9625rem;
   }
 
@@ -251,7 +267,16 @@ li li::before {
   li {
     font-size: 1.05rem;
   }
-  li li {
+
+  li::before {
+    font-size: 0.875rem;
+    line-height: 1.1rem;
+  }
+  li li::before {
+    line-height: 1rem;
+  }
+
+  li li > p {
     font-size: 0.9625rem;
   }
 
