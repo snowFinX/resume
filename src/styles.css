@@ -85,7 +85,7 @@ ul {
   display: flex;
   flex-direction: column;
   margin-top: 0.8rem;
-  gap: 0.8rem;
+  gap: 0.5rem;
   padding: 0;
 }
 
@@ -103,12 +103,12 @@ li {
   list-style-type: none;
   padding-left: 1rem;
   font-size: 1.2rem;
+  line-height: 1.2;
 }
 
 li li,
 li li > p {
   font-size: 1.1rem;
-  line-height: 1.3rem;
 }
 
 li::before {
@@ -119,7 +119,7 @@ li::before {
   position: absolute;
   left: 2px;
   top: 0;
-  line-height: 1.4rem;
+  line-height: 1.4;
 }
 
 .project li > p {
@@ -132,13 +132,11 @@ li::before {
 
 li li::before {
   content: '◦';
-  line-height: 1.3rem;
 }
 
 li li li::before {
   content: '◆';
   font-size: 0.4rem;
-  line-height: 1.4rem;
 }
 
 .container {
@@ -213,16 +211,11 @@ li li li::before {
 
   li::before {
     font-size: 0.875rem;
-    line-height: 1.1rem;
-  }
-
-  li li::before {
-    line-height: 1.2rem;
+    line-height: 1.3;
   }
 
   li li li::before {
     font-size: 0.4rem;
-    line-height: 1.3rem;
   }
 
   li li,
