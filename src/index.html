@@ -27,11 +27,11 @@
           </p>
           <br />
           <p>
-            현재 회사에서는 서비스상품 예약 데이터 정상 반영률을 86.3%에서 100%로 개선하는 등 결제·예약 정합성을 수치로 관리하고 있습니다.
+            현재 회사에서는 서비스상품 결제 후 예약 데이터 정상 반영률을 86.3%에서 100%로 개선하는 등, 결제 이후 데이터 정합성을 수치로 관리하고 있습니다.
           </p>
           <br />
           <p>
-            흩어져 있던 AI command 7개를 정리해 프로젝트 고유 규칙은 운영 문서라는 단일 원본으로 통합하고, 공통 절차를 재사용 가능한 Skill로 구성한 AI 개발 워크플로우 빌더를 직접 설계·구현했습니다.
+            기존 AI command 7개를 프로젝트 운영 문서와 재사용 가능한 Skill로 재구성하고, 내 개발 절차를 여러 프로젝트에서 AI가 적용·검증하도록 하는 AI 개발 워크플로우 빌더를 직접 설계·구현했습니다.
           </p>
         </div>
       </section>
@@ -49,7 +49,7 @@
               <h4>DX 파트</h4>
               <ul>
                 <li>
-                  프론트엔드·백엔드 단독 개발, 요구사항 정의·기술 설계·구현·검증과 디자이너 시안 검토 주도
+                  프론트엔드·백엔드 개발, 요구사항 정의부터 운영까지 직접 판단·실행 — 화이트라벨 대신 API 제품화 제안, 예약 정합화 설계, 레거시 인프라 정리
                 </li>
                 <li>
                   모션랩 고객·관리자 화면과 WAS API 개발, 외부 분석 API 연동부터 리포트 조회·영상 비교·추천운동까지 연결
@@ -204,8 +204,7 @@
               <time>2025. 12 - current</time>
               <ul>
                 <li>
-                  이벤트 트래픽 집중 시 페이지 진입마다 Shopby API로 불필요한 요청이 fan-out되면서 503 위험이 커지는 구조였다. 비로그인 신규 탭 진입 후 6초간 Network 패널에서 누적 Shopby API 요청 수를 직접 계측했다(수동 관찰, 정식 벤치마크 아님).
-                  대표 3페이지 합산 118건→60건(49.2%↓, 메인 36→22·목록 40→15·상세 42→23)으로 줄였다. (2026-07-24, v2.1.0 / 관련 테스트 28개·전체 124개 통과)
+                  이벤트 트래픽 집중 시 페이지 진입마다 Shopby API로 불필요한 요청이 fan-out되는 503 위험 구조. 비로그인 신규 탭 진입 후 6초간 Network 패널에서 누적 Shopby API 요청 수 직접 계측(수동 관찰, 정식 벤치마크 아님). 대표 3페이지 합산 118건→60건(49.2%↓, 메인 36→22·목록 40→15·상세 42→23) 감소 (2026-07-24, v2.1.0 / 관련 테스트 28개·전체 124개 통과)
                 </li>
                 <li>
                   장바구니 연속 변경 요청을 최종 목표 수량으로 병합, 화면 즉시 반영·서버 동기화·실패 복구와 계측 수량을 연결
@@ -214,7 +213,7 @@
                   GA4 상품 조회·장바구니·결제 시작·구매 완료 이벤트를 Shopby 확정값과 대조, 중복 전송 방지·쿠폰 배분·상품금액과 배송비 분리 적용
                 </li>
                 <li>
-                  요청 수·실행 시점·캐시 범위를 먼저 파악한 뒤 최적화했고, API 호출 감소와 렌더링 성능은 별도 지표로 측정했다
+                  요청 수·실행 시점·캐시 범위 파악 후 최적화, API 호출 감소와 렌더링 성능은 별도 지표로 측정
                 </li>
               </ul>
               <h5>사용 기술</h5>
@@ -226,7 +225,7 @@
               <time>2026. 4 - 2026. 9</time>
               <ul>
                 <li>
-                  결제 후 예약 정상 반영률이 86.3%에 불과해 예약 누락·이중 반영이 빈발하고, 매장 이미지 타격과 본사 수동 확인 요청이 이어졌다
+                  결제 후 예약 정상 반영률 86.3%에 불과해 예약 누락·이중 반영 빈발, 매장 이미지 타격과 본사 수동 확인 요청 지속
                 </li>
                 <li>
                   Shopby가 처리한 결제·취소 이벤트를 WAS 웹훅으로 수신, 서비스상품의 내부 예약 이력·재고에 반영
@@ -252,10 +251,7 @@
               <time>2026. 3 - current</time>
               <ul>
                 <li>
-                  외부 연동(Ochy)과 기능이 늘어나며 Route 한 파일에 요청·응답, SQL, 외부 API 호출, 도메인 로직이 섞여 있어, 책임별 계층으로 분리
-                </li>
-                <li>
-                  계층 이관과 기능 확장 중 기존 동작 보호를 위해 분석 시작·결과 조회·저장·실패 분기 회귀 테스트를 추가하고, 레거시 폴더에 새 기능이 쌓이지 않도록 구조 테스트 구성
+                  요청·응답·SQL·외부 API·도메인 로직이 섞인 단일 Route 파일을 책임별 계층으로 분리, 회귀·구조 테스트로 기존 동작 보호와 레거시 확산 방지
                 </li>
                 <li>
                   반복 빌드 대기 시간 단축을 위해 Webpack filesystem·loader 캐시를 적용, 로컬 프로덕션 재빌드 43.72초 → 약 10초 (약 77% 단축)
@@ -291,16 +287,16 @@
               <time>2026. 8 - 2026. 9</time>
               <ul>
                 <li>
-                  문서·태그 없이 방치된 AWS 인프라 전체를 실사해 아키텍처를 정리하고 자원 현황을 문서화했다.
+                  문서·태그 없이 방치된 AWS 인프라 전체 실사, 아키텍처 정리 및 자원 현황 문서화
                 </li>
                 <li>
-                  서비스별 비용 분석·배부로 낭비 지점을 특정하고 이후 비용 판단의 근거를 마련했다.
+                  서비스별 비용 분석·배부로 낭비 지점 특정, 이후 비용 판단의 근거 마련
                 </li>
                 <li>
                   월 $357의 연장지원료가 붙기 시작한 테니스메트로 레거시 RDS 2대(ajlabs-crm, ajlabs-rds-db): 업그레이드 대신 연결 로그 수집으로 사용처를 전수 확인한 뒤 중지 검증 후 안전하게 삭제, 월 $401→$19(약 95%↓)
                 </li>
                 <li>
-                  테니스메트로 CloudFront: 종량제 $214/월(2026년 6월)까지 치솟은 원인을 특정한 뒤 정액제($15/월)로 전환해 예측 가능한 비용 구조로 바꿨다.
+                  계정 전체 CloudFront 종량제 비용 $214.80/월(2026년 6월)의 주원인을 테니스메트로 배포 트래픽으로 특정, 해당 배포를 정액제($15/월)로 전환해 예측 가능한 비용 구조 확립
                 </li>
               </ul>
               <h5>사용 기술</h5>
@@ -327,7 +323,7 @@
                 </li>
               </ul>
               <h5>사용 기술</h5>
-              <p>Ant Design, Typescript, React, Storybook, Playwright</p>
+              <p>Ant Design, TypeScript, React, Storybook, Playwright</p>
             </div>
           </div>
         </div>
@@ -359,7 +355,7 @@
                 </li>
               </ul>
               <h5>사용 기술</h5>
-              <p>Typescript, React, Emotion, Storybook, Rollup</p>
+              <p>TypeScript, React, Emotion, Storybook, Rollup</p>
             </div>
 
             <div class="project">
@@ -379,7 +375,7 @@
                 </li>
               </ul>
               <h5>사용 기술</h5>
-              <p>Typescript, React, SWR, Zustand, Emotion, Vite, Vitest, MSW</p>
+              <p>TypeScript, React, SWR, Zustand, Emotion, Vite, Vitest, MSW</p>
             </div>
 
             <div class="project">
@@ -405,7 +401,7 @@
                 </li>
               </ul>
               <h5>사용 기술</h5>
-              <p>Typescript, React, Emotion, React Flow, Jest, GraphQL</p>
+              <p>TypeScript, React, Emotion, React Flow, Jest, GraphQL</p>
             </div>
 
             <div class="project">
@@ -427,7 +423,7 @@
               </ul>
               <h5>사용 기술</h5>
               <p>
-                Typescript, React, Recoil, Emotion, React Flow, Jest, GraphQL
+                TypeScript, React, Recoil, Emotion, React Flow, Jest, GraphQL
               </p>
             </div>
 
@@ -446,7 +442,7 @@
                 </li>
               </ul>
               <h5>사용 기술</h5>
-              <p>JavaScript, Typescript, React, Redux, TanStack Query, Sass</p>
+              <p>JavaScript, TypeScript, React, Redux, TanStack Query, Sass</p>
             </div>
             <div class="project">
               <h4>
@@ -465,7 +461,7 @@
                 </li>
               </ul>
               <h5>사용 기술</h5>
-              <p>Typescript, React, Redux Toolkit, D3, Sass</p>
+              <p>TypeScript, React, Redux Toolkit, D3, Sass</p>
             </div>
           </div>
         </div>
