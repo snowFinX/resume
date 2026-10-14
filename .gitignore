@@ -4,3 +4,4 @@ dist
 docs
 form.md
 .DS_Store
+/local-notes/
