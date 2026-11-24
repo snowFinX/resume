@@ -247,41 +247,54 @@
             </div>
 
             <div class="project">
+              <h4>디자인시스템 UI 검사 자동화</h4>
+              <time>2026. 10 - 2026. 11</time>
+              <ul>
+                <li>
+                  <p>
+                    Storybook·Playwright로 공용 컴포넌트의 상태별 시각 회귀
+                    검사를 구축하고, 기준 이미지 비교와 크기·잘림 규격 검사를 분리
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    TypeScript AST·Babel로 레거시 UI 사용처 후보를 수집해 실제
+                    화면에서 교체 전후를 비교하는 검사 코드와 보고서를 자동 생성
+                  </p>
+                </li>
+                <li>
+                  <p>검사 설정만 바뀌면 영향받는 화면만 다시 검사하도록 구현</p>
+                </li>
+              </ul>
+              <h5>사용 기술</h5>
+              <p>React, TypeScript, Storybook, Playwright, TypeScript AST, Babel</p>
+            </div>
+
+            <div class="project">
               <h4>
-                온라인몰 데이터 조회·구매 흐름 및 계측 개선 (<a
+                레이스먼트 모바일 홈 초기 로딩 개선 (<a
                   href="https://www.racement.co.kr/"
                   target="_blank"
                   >레이스먼트</a
                 >)
               </h4>
-              <time>2026. 7 - current</time>
+              <time>2026. 11</time>
               <ul>
                 <li>
-                  <p>GA4 구매 퍼널의 부정확한 금액과 중복 이벤트</p>
                   <p>
-                    → 상품 조회부터 장바구니·결제 시작·구매 완료까지 퍼널 이벤트
-                    정비
-                  </p>
-                  <p>
-                    → 쿠폰 배분과 상품 합계 검증, 배송비 분리 계산으로 Shopby
-                    주문 데이터와 GA4 구매 이벤트 금액을 맞추고 중복 등록 제어
+                    비회원·대기열 비활성 경로의 배너 요청을 HTML 단계로 앞당기고
+                    React에서 진행 중인 요청과 응답을 재사용
                   </p>
                 </li>
                 <li>
                   <p>
-                    Shopby 503 대응 → 공통 Layout의 메인 진열 조회를 메인
-                    화면으로 제한하고 공통 조회 재사용
-                  </p>
-                  <p>
-                    → 비로그인 새 탭 진입 후 6초간 메인과 상품 목록, 상품 상세의
-                    합산 요청 118건 → 60건(49.2% 감소)
+                    요청 실패 시 재시도 경로를 제공하고 배너 영역을 미리 확보해
+                    초기 화면의 레이아웃 이동을 줄이는 변경을 운영에 반영
                   </p>
                 </li>
               </ul>
               <h5>사용 기술</h5>
-              <p>
-                JavaScript, TypeScript, React, TanStack Query, Shopby API, GA4
-              </p>
+              <p>JavaScript, React, Shopby API</p>
             </div>
 
             <div class="project">
