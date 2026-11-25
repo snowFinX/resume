@@ -64,7 +64,7 @@
                   외부 API 기반 러닝 분석 서비스 구축과 Shopby 연동 예약 시스템
                   개선
                 </li>
-                <li>온라인몰 구매 흐름과 GA4 구매 퍼널 계측 개선</li>
+                <li>온라인몰 모바일 홈 초기 로딩 개선과 디자인시스템 UI 검사 자동화</li>
                 <li>분석 리포트 공통화 및 AWS 인프라·비용 구조 개선</li>
               </ul>
             </div>
@@ -191,6 +191,96 @@
           <div class="experience__right">
             <div class="project">
               <h4>
+                온라인몰 모바일 홈 웹 성능 개선 (<a
+                  href="https://www.racement.co.kr/"
+                  target="_blank"
+                  >레이스먼트</a
+                >)
+              </h4>
+              <time>2026. 11</time>
+              <ul>
+                <li>
+                  <p>첫 배너를 먼저 요청하면서 대기열 입장 순서와 API 1회 호출 유지</p>
+                  <p>
+                    → 비회원·대기열 비활성 경로는 React 초기화 전 HTML 단계에서
+                    요청하고 같은 Promise를 재사용. 대기열이 활성화되면 입장 후
+                    요청
+                  </p>
+                </li>
+                <li>
+                  <p>배너 무응답 시 재시도 안내까지 최대 약 20초 → 10초</p>
+                  <p>→ HTML 선요청과 React 복구 요청이 하나의 제한 시간을 공유하도록 설계</p>
+                </li>
+                <li>
+                  <p>초기 화면 밀림 개선: 모바일 Lighthouse CLS 0.293 → 0.006</p>
+                  <p>→ 헤더·배너 영역을 미리 확보하고 로딩 화면을 본문과 분리</p>
+                </li>
+              </ul>
+              <h5>사용 기술</h5>
+              <p>React, JavaScript, TypeScript, Shopby API, Lighthouse</p>
+            </div>
+
+            <div class="project">
+              <h4>디자인시스템 검증 도구 설계 및 개발</h4>
+              <time>2026. 10 - 2026. 11</time>
+              <ul>
+                <li>
+                  <p>앱 코드를 바꾸기 전에 실제 화면에서 공용 UI 교체 결과 검증</p>
+                  <p>
+                    → 검사용 빌드에서 공용 컴포넌트를 렌더해 PC·모바일 전후를
+                    비교하고, 모바일 우편번호 검색 버튼의 라벨 잘림을 배포 전에
+                    발견해 배치 수정안을 검증
+                  </p>
+                  <p>
+                    → TypeScript AST로 스키마에 정의된 레거시 UI 사용처와 연결
+                    화면을 찾고, 기존 UI 실측값과 공용 규격으로 교체 props 초안을
+                    생성
+                  </p>
+                </li>
+                <li>
+                  <p>컴포넌트 회귀와 실제 화면의 배치 문제를 별도로 검사</p>
+                  <p>
+                    → Storybook 상태는 기준 이미지와 비교하고, 실제 화면은 의도한
+                    디자인 변경을 실패로 보지 않도록 규격·잘림·넘침을 검사
+                  </p>
+                  <p>
+                    → 장바구니 수정 후 영향받은 화면만 재촬영해 비교 화면 327장 중
+                    9장만 다시 찍고 318장 재사용
+                  </p>
+                </li>
+              </ul>
+              <h5>사용 기술</h5>
+              <p>React, TypeScript, Babel, Storybook, Playwright</p>
+            </div>
+
+            <div class="project">
+              <h4>CPET 분석 라이브러리 설계 및 서비스 통합</h4>
+              <time>2026. 2 - 2026. 3 (Zone2 통합) / 2026. 11 (러닝 능력 분석 확장)</time>
+              <ul>
+                <li>
+                  <p>독립형 CPET 앱과 기존 서비스가 분석 화면과 리포트를 공용으로 사용하도록 구조 개선</p>
+                  <p>
+                    → Zone2부터 통합하고 러닝 능력 분석까지 확장. 파일 입력·업로드,
+                    분석 API 호출·오류 처리, 리포트용 데이터 가공과 표시를 패키지화하고
+                    회원·예약·문진표 연결, 권한, 결과 저장·조회는 서비스에서 처리
+                  </p>
+                  <p>
+                    → ESM·CJS와 TypeScript 타입 선언을 제공하고 기존 사용 경로를 유지.
+                    PostCSS로 스타일 범위를 제한해 Vite 단독 앱과 Webpack 서비스에서 재사용
+                  </p>
+                  <p>
+                    → 비동기 저장을 연결하는 분석 완료 콜백을 제공하고, 재렌더·연속 제출 시
+                    중복 실행 방지. 단독 앱·서비스 모달에서 분석 UI를, 관리자 상세·PDF에서
+                    공용 리포트를 재사용
+                  </p>
+                </li>
+              </ul>
+              <h5>사용 기술</h5>
+              <p>React, TypeScript, Vite, Webpack, PostCSS, Puppeteer</p>
+            </div>
+
+            <div class="project">
+              <h4>
                 모션랩 러닝 자세 분석 서비스 (<a
                   href=https://polyester-dogwood-a3b.notion.site/RACEMENT-3ff232fab02e80dbb27cffdcbb779393?source=copy_link"
                   target="_blank"
@@ -247,41 +337,26 @@
             </div>
 
             <div class="project">
-              <h4>
-                온라인몰 데이터 조회·구매 흐름 및 계측 개선 (<a
-                  href="https://www.racement.co.kr/"
-                  target="_blank"
-                  >레이스먼트</a
-                >)
-              </h4>
-              <time>2026. 7 - current</time>
+              <h4>AWS 인프라 실사 및 비용 구조 개선</h4>
+              <time>2026. 8 - 2026. 9</time>
               <ul>
                 <li>
-                  <p>GA4 구매 퍼널의 부정확한 금액과 중복 이벤트</p>
                   <p>
-                    → 상품 조회부터 장바구니·결제 시작·구매 완료까지 퍼널 이벤트
-                    정비
+                    문서와 태그가 부족한 AWS 인프라 실사 → 아키텍처와 자원 현황
+                    문서화
                   </p>
                   <p>
-                    → 쿠폰 배분과 상품 합계 검증, 배송비 분리 계산으로 Shopby
-                    주문 데이터와 GA4 구매 이벤트 금액을 맞추고 중복 등록 제어
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    Shopby 503 대응 → 공통 Layout의 메인 진열 조회를 메인
-                    화면으로 제한하고 공통 조회 재사용
+                    → 레거시 RDS 2대의 사용처를 접속 로그로 확인 후 삭제(기존 월
+                    비용 약 $401, 연장지원료 포함)
                   </p>
                   <p>
-                    → 비로그인 새 탭 진입 후 6초간 메인과 상품 목록, 상품 상세의
-                    합산 요청 118건 → 60건(49.2% 감소)
+                    → 트래픽이 가장 큰 배포를 정액제로 전환해 CloudFront 월 비용
+                    $214.80 → $15로 절감
                   </p>
                 </li>
               </ul>
               <h5>사용 기술</h5>
-              <p>
-                JavaScript, TypeScript, React, TanStack Query, Shopby API, GA4
-              </p>
+              <p>AWS(RDS, CloudFront)</p>
             </div>
 
             <div class="project">
@@ -334,55 +409,6 @@
               </p>
             </div>
 
-            <div class="project">
-              <h4>CPET Zone2 분석 앱의 라이브러리 전환 및 서비스 통합</h4>
-              <time>2026. 2 - 2026. 3</time>
-              <ul>
-                <li>
-                  <p>
-                    빌드 환경과 전역 스타일이 다른 독립형 분석 앱을 기존
-                    서비스에 통합
-                  </p>
-                  <p>
-                    → 분석 UI·계산·리포트를 패키지화하고 회원·문진표 연결과 결과
-                    저장은 서비스에서 처리
-                  </p>
-                  <p>
-                    → ESM·CJS 빌드를 구성해 Webpack 서비스에 통합하고 PostCSS로
-                    스타일 범위를 제한해 충돌 완화
-                  </p>
-                  <p>
-                    → 모달에서는 분석 UI를, 관리자 상세·PDF에서는 공용 리포트
-                    컴포넌트를 재사용
-                  </p>
-                </li>
-              </ul>
-              <h5>사용 기술</h5>
-              <p>React, TypeScript, Vite, Webpack, PostCSS, Puppeteer</p>
-            </div>
-
-            <div class="project">
-              <h4>AWS 인프라 실사 및 비용 구조 개선</h4>
-              <time>2026. 8 - 2026. 9</time>
-              <ul>
-                <li>
-                  <p>
-                    문서와 태그가 부족한 AWS 인프라 실사 → 아키텍처와 자원 현황
-                    문서화
-                  </p>
-                  <p>
-                    → 레거시 RDS 2대의 사용처를 접속 로그로 확인 후 삭제(기존 월
-                    비용 약 $401, 연장지원료 포함)
-                  </p>
-                  <p>
-                    → 트래픽이 가장 큰 배포를 정액제로 전환해 CloudFront 월 비용
-                    $214.80 → $15로 절감
-                  </p>
-                </li>
-              </ul>
-              <h5>사용 기술</h5>
-              <p>AWS(RDS, CloudFront)</p>
-            </div>
           </div>
         </div>
         <div class="experience">
