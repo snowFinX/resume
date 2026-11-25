@@ -257,6 +257,32 @@
             </div>
 
             <div class="project">
+              <h4>CPET 분석 라이브러리 설계 및 서비스 통합</h4>
+              <time>2026. 2 - 2026. 3 (Zone2 통합) / 2026. 11 (러닝 능력 분석 확장)</time>
+              <ul>
+                <li>
+                  <p>독립형 CPET 앱과 기존 서비스가 분석 화면과 리포트를 공용으로 사용하도록 구조 개선</p>
+                  <p>
+                    → Zone2부터 통합하고 러닝 능력 분석까지 확장. 파일 입력·업로드,
+                    분석 API 호출·오류 처리, 리포트용 데이터 가공과 표시를 패키지화하고
+                    회원·예약·문진표 연결, 권한, 결과 저장·조회는 서비스에서 처리
+                  </p>
+                  <p>
+                    → ESM·CJS와 TypeScript 타입 선언을 제공하고 기존 사용 경로를 유지.
+                    PostCSS로 스타일 범위를 제한해 Vite 단독 앱과 Webpack 서비스에서 재사용
+                  </p>
+                  <p>
+                    → 비동기 저장을 연결하는 분석 완료 콜백을 제공하고, 재렌더·연속 제출 시
+                    중복 실행 방지. 단독 앱·서비스 모달에서 분석 UI를, 관리자 상세·PDF에서
+                    공용 리포트를 재사용
+                  </p>
+                </li>
+              </ul>
+              <h5>사용 기술</h5>
+              <p>React, TypeScript, Vite, Webpack, PostCSS, Puppeteer</p>
+            </div>
+
+            <div class="project">
               <h4>
                 모션랩 러닝 자세 분석 서비스 (<a
                   href=https://polyester-dogwood-a3b.notion.site/RACEMENT-3ff232fab02e80dbb27cffdcbb779393?source=copy_link"
@@ -384,33 +410,6 @@
                 TypeScript, JavaScript, React, Node.js, Express, MySQL, Shopby
                 API
               </p>
-            </div>
-
-            <div class="project">
-              <h4>CPET Zone2 분석 앱의 라이브러리 전환 및 서비스 통합</h4>
-              <time>2026. 2 - 2026. 3</time>
-              <ul>
-                <li>
-                  <p>
-                    빌드 환경과 전역 스타일이 다른 독립형 분석 앱을 기존
-                    서비스에 통합
-                  </p>
-                  <p>
-                    → 분석 UI·계산·리포트를 패키지화하고 회원·문진표 연결과 결과
-                    저장은 서비스에서 처리
-                  </p>
-                  <p>
-                    → ESM·CJS 빌드를 구성해 Webpack 서비스에 통합하고 PostCSS로
-                    스타일 범위를 제한해 충돌 완화
-                  </p>
-                  <p>
-                    → 모달에서는 분석 UI를, 관리자 상세·PDF에서는 공용 리포트
-                    컴포넌트를 재사용
-                  </p>
-                </li>
-              </ul>
-              <h5>사용 기술</h5>
-              <p>React, TypeScript, Vite, Webpack, PostCSS, Puppeteer</p>
             </div>
 
           </div>
